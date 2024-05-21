@@ -1,0 +1,35 @@
+function doGet() {
+  // Abrir un spreadsheet por su id
+  const spreadsheet = SpreadsheetApp.openById(
+    '1pM6Op3vdHnu7eYuAkLXxSt6Q2uCfANWVenwXfYO9-4s'
+  );
+
+  // Seleccionar la hoja que tiene los datos
+  const sheet = spreadsheet.getSheets()[0];
+
+  // Obtener los valores que tiene
+  const values = sheet.getDataRange().getValues();
+
+  // Obtener los headers de la base de datos
+  const headers = values.shift();
+
+  // Inicializar objeto de respuesta
+  const response = { data: [] };
+
+  // Agregar datos
+  for (let i = 0; i < values.length; i++) {
+    let row = values[i];
+    let register = {};
+    for (let j = 0; j < row.length; j++) {
+      register[headers[j]] = row[j];
+    }
+    response.data.push(register);
+  }
+
+  // Parsear JSON
+  const json = JSON.stringify(response);
+
+  return ContentService.createTextOutput(json).setMimeType(
+    ContentService.MimeType.JSON
+  );
+}

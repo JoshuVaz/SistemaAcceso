@@ -1,0 +1,12 @@
+{
+    "require": {
+        "dompdf/dompdf": "^1.1",
+        "phpoffice/phpspreadsheet": "^1.25",
+        "automattic/woocommerce": "^3.1",
+        "smalot/pdfparser": "^2.3",
+        "picqer/php-barcode-generator": "^2.2",
+        "setasign/fpdf": "1.8.*",
+        "setasign/fpdi": "^2.3",
+        "tecnickcom/tc-lib-pdf": "dev-main"
+    }
+}
